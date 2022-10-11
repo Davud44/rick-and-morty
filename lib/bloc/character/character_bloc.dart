@@ -11,9 +11,13 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
     on<GetCharacterEvent>((event, emit) async {
       characterRepository = CharacterRepository();
       emit(CharacterLoading());
-      CharacterResponse characterResponse =
-          await characterRepository!.getCharacters();
-      emit(CharacterLoaded(character: characterResponse));
+      try{
+        CharacterResponse characterResponse =
+        await characterRepository!.getCharacters();
+        emit(CharacterLoaded(character: characterResponse));
+      }catch (e){
+        emit(CharacterError());
+      }
     });
   }
 }

@@ -72,7 +72,11 @@ class _CharacterScreenState extends State<CharacterScreen> {
               ),
             );
           } else {
-            return const Center(child: Text('Error occurred'));
+            return const Center(
+                child: Text(
+              'Error occurred',
+              style: TextStyle(color: Colors.white),
+            ));
           }
         }),
       ),
@@ -99,7 +103,11 @@ class CharacterItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               child: CachedNetworkImage(imageUrl: character!.image!)),
           const SizedBox(height: 5),
-          Text(character!.name!, overflow: TextOverflow.ellipsis,textDirection: TextDirection.ltr,)
+          Text(
+            character!.name!,
+            overflow: TextOverflow.ellipsis,
+            textDirection: TextDirection.ltr,
+          )
         ],
       ),
     );
